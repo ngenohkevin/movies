@@ -1,11 +1,12 @@
-import React from 'react';
-import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import Movies from "./Components/Movies";
-import Admin from "./Components/Admin"
-import Home from "./Components/Home";
-import OneMovie from "./Components/OneMovie";
-import Genres from "./Components/Genres";
-import OneGenre from "./Components/OneGenre";
+import React, { Component, Fragment } from 'react';
+import {BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch} from 'react-router-dom';
+import Movies from './Components/Movies';
+import Admin from './Components/Admin';
+import Home from './Components/Home';
+import OneMovie from './Components/OneMovie';
+import Genres from './Components/Genres';
+import OneGenre from './Components/OneGenre';
+import EditMovie from './Components/EditMovie';
 
 export default function App() {
     return (
@@ -33,6 +34,9 @@ export default function App() {
                                     <Link to="/genres">Genres</Link>
                                 </li>
                                 <li className="list-group-item">
+                                    <Link to="/admin/movie/0">Add movie</Link>
+                                </li>
+                                <li className="list-group-item">
                                     <Link to="/admin">Manage Catalogue</Link>
                                 </li>
                             </ul>
@@ -53,6 +57,8 @@ export default function App() {
                             <Route exact path="/genres">
                                 <Genres />
                             </Route>
+
+                            <Route path="/admin/movie/:id" component={EditMovie} />
 
                             <Route path="/admin">
                                 <Admin />
