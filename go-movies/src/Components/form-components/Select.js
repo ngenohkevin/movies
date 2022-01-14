@@ -1,18 +1,19 @@
-const Select = (props) => {
+const Select = ({name, value, handleChange, placeholder, title, options, ...otherProps}) => {
     return (
         <div className="mb-3">
-            <label htmlFor={props.name} className="form-label">
+            <label htmlFor={name} className="form-label">
                 {" "}
-                {props.title}{" "}
+                {title}{" "}
             </label>
             <select
+                {...otherProps}
                 className="form-select"
-                name={props.name}
-                value={props.value}
-                onChange={props.handleChange}
+                name={name}
+                // value={value}
+                // onChange={handleChange}
             >
-                <option value="">{props.placeholder}</option>
-                {props.options.map((option) => {
+                <option value="">{placeholder}</option>
+                {options?.map?.((option) => { // check so that it doesn't throw an error when null/undefined
                     return (
                         <option
                             className="form-select"

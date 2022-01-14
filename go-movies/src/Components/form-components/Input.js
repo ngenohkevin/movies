@@ -1,19 +1,23 @@
-const Input = (props) => {
+const Input = ({ title, name, type, className, placeholder, errorMsg, errorDiv, ...otherProps}) => {
     return (
         <div className="mb-3">
-            <label htmlFor={props.name} className="form-label">
-                {props.title}
+            <label htmlFor={name} className="form-label">
+                {title}
             </label>
             <input
-                type={props.type}
-                className={`form-control ${props.className}`}
-                id={props.name}
-                name={props.name}
-                value={props.value}
-                onChange={props.handleChange}
-                placeholder={props.placeholder}
+                {...otherProps} // destructuring in Javascript, get all props provided without having to explicitly type them out
+                // destructuring props before explicitly defining props like below will ensure that you override the props
+                // even when passed to the component
+                type={type}
+                className={`form-control ${className}`}
+                id={name}
+                name={name}
+                // value={props.value}
+                // onChange={props.handleChange}
+                placeholder={placeholder}
+                // {..props} doing it here will give you flexibility of overriding the above props(default)
             />
-            <div className={props.errorDiv}>{props.errorMsg}</div>
+            <div className={errorDiv}>{errorMsg}</div>
         </div>
     );
 };
